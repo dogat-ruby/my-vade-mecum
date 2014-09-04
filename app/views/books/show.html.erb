@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Bk title:</strong>
+  <%= @book.bk_title %>
+</p>
+
+<p>
+  <strong>Bk isbn:</strong>
+  <%= @book.bk_isbn %>
+</p>
+
+<p>
+  <strong>Bk author:</strong>
+  <%= @book.bk_author %>
+</p>
+<p><%= image_tag @book.picture if @book.picture? %> </p>
+
+<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Back', books_path %>
