@@ -1,19 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title</strong>
-  <%= @book.bk_title %>
-</p>
-
-<p>
-  <strong>ISBN:</strong>
-  <%= @book.bk_isbn %>
-</p>
-<p>
-  <strong>Author:</strong>
-  <%= @book.bk_author %>
-</p>
-<p><%= image_tag @book.picture if @book.picture? %> </p>
+<table>
+	<tr>	
+	<td><%= image_tag @book.picture_url(:thumb) if @book.picture? %> </td>
+	<td align= "center" width=400>
+		<p><strong>Title</strong>
+  		<%= @book.bk_title %></p>
+  		<p><strong>ISBN:</strong>
+  		<%= @book.bk_isbn %></p>
+  		<p><strong>Author:</strong>
+  		<%= @book.bk_author %></p>
+	</td>
+	</tr>
+</table>
 <p><%= rating_for @book, "bk_title", :start => 5%></p>
 
 <%= link_to 'Edit', edit_book_path(@book) %> |

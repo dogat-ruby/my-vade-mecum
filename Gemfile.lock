@@ -86,6 +86,8 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25.1)
+    mini_magick (3.8.0)
+      subexec (~> 0.2.1)
     mini_portile (0.6.0)
     minitest (5.4.1)
     multi_json (1.10.1)
@@ -137,6 +139,7 @@ GEM
     ratyrate (1.2.0.alpha)
     rdoc (4.1.1)
       json (~> 1.4)
+    rmagick (2.13.3)
     rspec-core (3.0.4)
       rspec-support (~> 3.0.0)
     rspec-expectations (3.0.4)
@@ -177,6 +180,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    subexec (0.2.3)
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
@@ -212,11 +216,13 @@ DEPENDENCIES
   haml
   jbuilder (~> 2.0)
   jquery-rails
+  mini_magick (= 3.8.0)
   omniauth-facebook
   omniauth-google-oauth2
   pg
   rails (= 4.1.4)
   ratyrate
+  rmagick
   rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

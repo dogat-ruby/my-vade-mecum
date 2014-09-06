@@ -21,6 +21,8 @@ gem 'rails', '4.1.4'
 # Use postgresql as the database for Active Record
 gem 'pg'
 gem 'carrierwave'
+gem 'rmagick'
+gem 'mini_magick', '3.8.0'
 gem 'simplecov'
 gem 'ratyrate'
 # Use SCSS for stylesheets
