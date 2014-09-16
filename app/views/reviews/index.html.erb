@@ -16,9 +16,9 @@
         <td><%= review.text %></td>
         <td><%= review.user_id %></td>
         <td><%= review.book_id %></td>
-        <td><%= link_to 'Show', review %></td>
-        <td><%= link_to 'Edit', edit_review_path(review) %></td>
-        <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', book_review_path(@book, review) %></td>
+        <td><%= link_to 'Edit', edit_book_review_path(@book, review) %></td>
+        <td><%= link_to 'Destroy', book_review_path(@book, review), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Review', new_review_path %>
+<%= link_to 'New Review', new_book_review_path %>

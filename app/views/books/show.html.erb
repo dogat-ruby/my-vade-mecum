@@ -10,10 +10,13 @@
   		<%= @book.bk_isbn %></p>
   		<p><strong>Author:</strong>
   		<%= @book.bk_author %></p>
+  		 <p><strong>User_id:</strong>
+  		<%= @book.user_id %></p>
 	</td>
 	</tr>
 </table>
 <p><%= rating_for @book, "bk_title", :start => 5%></p>
 
+<%= link_to "Add a review", book_reviews_path(@book) %>
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>

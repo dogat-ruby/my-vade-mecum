@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140906211111) do
+ActiveRecord::Schema.define(version: 20140912224906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20140906211111) do
     t.datetime "updated_at"
     t.string   "picture"
     t.hstore   "tags"
+    t.integer  "user_id"
   end
 
   create_table "overall_averages", force: true do |t|

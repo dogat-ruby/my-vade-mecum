@@ -15,5 +15,5 @@
   <%= @review.book_id %>
 </p>
 
-<%= link_to 'Edit', edit_review_path(@review) %> |
-<%= link_to 'Back', reviews_path %>
+<%= link_to 'Edit', edit_book_review_path(@review.book, @review) %> |
+<%= link_to 'Back', book_reviews_path(@review.book) %>

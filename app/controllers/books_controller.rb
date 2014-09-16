@@ -10,11 +10,13 @@ class BooksController < ApplicationController
   # GET /books/1
   # GET /books/1.json
   def show
+    @book = Book.find(params[:id])
+    #@user = User.find(@book.user_id)
   end
 
   # GET /books/new
   def new
-    @book = Book.new
+    @book = Book.new(params[:book])
   end
 
   # GET /books/1/edit
@@ -24,7 +26,7 @@ class BooksController < ApplicationController
   # POST /books
   # POST /books.json
   def create
-    @book = Book.new(book_params)
+    @book = current_user.books.build(book_params)#Book.new(book_params)
 
     respond_to do |format|
       if @book.save
@@ -54,6 +56,8 @@ class BooksController < ApplicationController
   # DELETE /books/1
   # DELETE /books/1.json
   def destroy
+    @book = Book.find(params[:id])
+    #@user = User.find(@book.user_id)
     @book.destroy
     respond_to do |format|
       format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
