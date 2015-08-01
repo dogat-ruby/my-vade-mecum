@@ -13,15 +13,11 @@
 
 ActiveRecord::Schema.define(version: 20140912224906) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-  enable_extension "hstore"
-
   create_table "average_caches", force: true do |t|
     t.integer  "rater_id"
     t.integer  "rateable_id"
     t.string   "rateable_type"
-    t.float    "avg",           null: false
+    t.float    "avg",           limit: 24, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -33,14 +29,15 @@ ActiveRecord::Schema.define(version: 20140912224906) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "picture"
-    t.hstore   "tags"
     t.integer  "user_id"
   end
+
+  add_index "books", ["bk_title"], name: "index_books_on_bk_title", using: :btree
 
   create_table "overall_averages", force: true do |t|
     t.integer  "rateable_id"
     t.string   "rateable_type"
-    t.float    "overall_avg",   null: false
+    t.float    "overall_avg",   limit: 24, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -49,7 +46,7 @@ ActiveRecord::Schema.define(version: 20140912224906) do
     t.integer  "rater_id"
     t.integer  "rateable_id"
     t.string   "rateable_type"
-    t.float    "stars",         null: false
+    t.float    "stars",         limit: 24, null: false
     t.string   "dimension"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -61,8 +58,8 @@ ActiveRecord::Schema.define(version: 20140912224906) do
   create_table "rating_caches", force: true do |t|
     t.integer  "cacheable_id"
     t.string   "cacheable_type"
-    t.float    "avg",            null: false
-    t.integer  "qty",            null: false
+    t.float    "avg",            limit: 24, null: false
+    t.integer  "qty",                       null: false
     t.string   "dimension"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -90,8 +87,8 @@ ActiveRecord::Schema.define(version: 20140912224906) do
     t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
