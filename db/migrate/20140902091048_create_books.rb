@@ -5,6 +5,8 @@ class CreateBooks < ActiveRecord::Migration
       t.integer :isbn
       t.string :author
       t.text :description
+      t.boolean :is_deleted ,default: false
+      t.boolean :is_approved ,default: false
       t.references :user, index: true
       t.timestamps
     end

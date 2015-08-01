@@ -20,11 +20,12 @@
 <%#= link_to "Add a review", book_reviews_path(@book) %>
 
 <%= render partial: "reviews/new" %>
+<h4>Reviews</h4>
 <div id="reviews">
 	<% if @book.reviews.count < 1 %>
 		<h4>No reviews yet</h4>
 	<% end %>
-	<%= render  @book.reviews %>
+	<%= render  @book.reviews.reload %>
 </div>
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>

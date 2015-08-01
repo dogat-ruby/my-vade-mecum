@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 20140912224906) do
     t.integer  "isbn"
     t.string   "author"
     t.text     "description"
+    t.boolean  "is_deleted",  default: false
+    t.boolean  "is_approved", default: false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
