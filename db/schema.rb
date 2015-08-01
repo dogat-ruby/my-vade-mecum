@@ -23,16 +23,18 @@ ActiveRecord::Schema.define(version: 20140912224906) do
   end
 
   create_table "books", force: true do |t|
-    t.string   "bk_title"
-    t.integer  "bk_isbn"
-    t.string   "bk_author"
+    t.string   "title"
+    t.integer  "isbn"
+    t.string   "author"
+    t.text     "description"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "picture"
-    t.integer  "user_id"
   end
 
-  add_index "books", ["bk_title"], name: "index_books_on_bk_title", using: :btree
+  add_index "books", ["title"], name: "index_books_on_title", using: :btree
+  add_index "books", ["user_id"], name: "index_books_on_user_id", using: :btree
 
   create_table "overall_averages", force: true do |t|
     t.integer  "rateable_id"
@@ -74,6 +76,9 @@ ActiveRecord::Schema.define(version: 20140912224906) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "reviews", ["book_id"], name: "index_reviews_on_book_id", using: :btree
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username"

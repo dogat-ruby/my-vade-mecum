@@ -1,21 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <table>
-	<tr>	
+	<tr>
 	<td><%= image_tag @book.picture_url(:thumb) if @book.picture? %> </td>
 	<td align= "center" width=400>
 		<p><strong>Title</strong>
-  		<%= @book.bk_title %></p>
+  		<%= @book.title %></p>
   		<p><strong>ISBN:</strong>
-  		<%= @book.bk_isbn %></p>
+  		<%= @book.isbn %></p>
   		<p><strong>Author:</strong>
-  		<%= @book.bk_author %></p>
-  		 <p><strong>User_id:</strong>
-  		<%= @book.user_id %></p>
+  		<%= @book.author %></p>
+  		 <p><strong>Created By:</strong>
+  		<%= @book.owner.username %></p>
 	</td>
 	</tr>
 </table>
-<p><%= rating_for @book, "bk_title", :start => 5%></p>
+<p><%= rating_for @book, "title", :start => 5%></p>
 
 <%= link_to "Add a review", book_reviews_path(@book) %>
 <%= link_to 'Edit', edit_book_path(@book) %> |

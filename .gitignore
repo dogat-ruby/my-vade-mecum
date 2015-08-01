@@ -17,3 +17,4 @@
 
 /config/database.yml
 /config/secret_token.rb
+coverage/

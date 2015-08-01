@@ -4,14 +4,14 @@ RSpec.describe "books/index", :type => :view do
   before(:each) do
     assign(:books, [
       Book.create!(
-        :bk_title => "Bk Title",
-        :bk_isbn => 1,
-        :bk_author => "Bk Author"
+        :title => "Bk Title",
+        :isbn => 1,
+        :author => "Bk Author"
       ),
       Book.create!(
-        :bk_title => "Bk Title",
-        :bk_isbn => 1,
-        :bk_author => "Bk Author"
+        :title => "Bk Title",
+        :isbn => 1,
+        :author => "Bk Author"
       )
     ])
   end

@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :book do
-    bk_title "MyString"
-    bk_isbn 1
-    bk_author "MyString"
+    title "MyString"
+    isbn 1
+    author "MyString"
   end
 end

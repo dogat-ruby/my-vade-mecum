@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe "books/show", :type => :view do
   before(:each) do
     @book = assign(:book, Book.create!(
-      :bk_title => "Bk Title",
-      :bk_isbn => 1,
-      :bk_author => "Bk Author"
+      :title => "Bk Title",
+      :isbn => 1,
+      :author => "Bk Author"
     ))
   end
 

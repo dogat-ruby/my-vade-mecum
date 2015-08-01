@@ -27,7 +27,7 @@ class BooksController < ApplicationController
   # POST /books.json
   def create
     @book = current_user.books.build(book_params)#Book.new(book_params)
-
+    @book.owner=current_user
     respond_to do |format|
       if @book.save
         format.html { redirect_to @book, notice: 'Book was successfully created.' }
@@ -73,6 +73,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:bk_title, :bk_isbn, :bk_author, :picture)
+      params.require(:book).permit(:title, :isbn, :author, :picture)
     end
 end
