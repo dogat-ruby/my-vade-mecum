@@ -29,15 +29,15 @@ class ReviewsController < ApplicationController
   def create
     @review = @book.reviews.build(review_params)
     @review.reviewer = current_user
-    @review.book = @book
-
+    @has_error=false
     respond_to do |format|
       if @review.save
         format.html { redirect_to [@book, @review], notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
         format.js   {render layout: false }
       else
-        format.html { render :new }
+        @has_error=true
+        format.html { render partial: :new }
         format.json { render json: @review.errors, status: :unprocessable_entity }
         format.js {}
       end
@@ -82,6 +82,6 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:text, :user_id, :book_id)
+      params.require(:review).permit(:text, :book_id)
     end
 end

@@ -1,32 +1,8 @@
-<%= form_for(@book, multipart: true) do |f| %>
-  <% if @book.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
-
-      <ul>
-      <% @book.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :isbn %><br>
-    <%= f.number_field :isbn %>
-  </div>
-  <div class="field">
-    <%= f.label :author %><br>
-    <%= f.text_field :author %>
-  </div>
-  <div>
-    <%= f.file_field :picture %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= simple_form_for @book,html: {multipart: true} do |f| %>
+  <%= f.input :title %>
+  <%= f.input :isbn %>
+  <%= f.input :author %>
+  <%= f.input :description, as: :text %>
+  <%= f.input :picture ,as: :file%>
+  <%= f.button :submit %>
 <% end %>
