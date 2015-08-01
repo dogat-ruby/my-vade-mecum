@@ -63,3 +63,4 @@ gem 'spring',        group: :development
 
 #follower
 gem "acts_as_follower"
+gem 'simple_form'
