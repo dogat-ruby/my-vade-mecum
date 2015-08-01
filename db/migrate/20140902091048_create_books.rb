@@ -6,6 +6,7 @@ class CreateBooks < ActiveRecord::Migration
       t.string :author
       t.text :description
       t.boolean :is_deleted ,default: false
+      t.boolean :is_active ,default: false
       t.boolean :is_approved ,default: false
       t.references :user, index: true
       t.timestamps
