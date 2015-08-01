@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'tag/show'
+
   post '/rate' => 'rater#create', :as => 'rate'
 
   devise_for :users
@@ -11,7 +13,7 @@ Rails.application.routes.draw do
       delete 'unfollow'
     end
   end
-
+  resources :tag
 
   root to: 'books#index'
 

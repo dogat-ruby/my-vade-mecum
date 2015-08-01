@@ -15,6 +15,11 @@
 	</td>
 	</tr>
 </table>
+<% @book.tags.each do |tag| %>
+	<span class="label label-info">
+  	<%= link_to tag.name, tag_path(tag) %>
+	</span>
+<% end %>
 <%= render partial: "follow_form" %>
 <p><%= rating_for @book, "title", :start => 5%></p>
 

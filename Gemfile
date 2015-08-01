@@ -64,3 +64,5 @@ gem 'spring',        group: :development
 #follower
 gem "acts_as_follower"
 gem 'simple_form'
+gem 'acts-as-taggable-on', '~> 3.4'
+gem 'isbn_validation'

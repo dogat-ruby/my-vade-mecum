@@ -1,0 +1,19 @@
+<h1>books Tagged as <%= @tag.name %></h1>
+
+<% if @books.count > 0 %>
+
+  <ul>
+
+  <% @books.each do |book| %>
+
+    <li><%= link_to book.title, book_path(book) %></li>
+
+  <% end %>
+
+  </ul>
+
+<% else %>
+
+  <p>This tag is not associated with any books.</p>
+
+<% end %>
