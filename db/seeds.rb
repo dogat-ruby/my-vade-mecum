@@ -20,6 +20,7 @@ when "development"
         username: "abvayad",
   			email: "aboobackervyd@gmail.com",
   			password: "12345678",
+				admin: true
 	    )
       user.confirm
 when "production"
