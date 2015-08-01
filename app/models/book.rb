@@ -9,9 +9,11 @@ class Book < ActiveRecord::Base
 	scope :to_be_approved, -> { where(is_approved: false)  }
 	scope :approved, -> { where(is_approved: true)  }
 	# validations
-	validates :title, presence: true
-	validates :author, presence: true
+	validates :title,:author,:picture, presence: true
 	mount_uploader :picture, PictureUploader
+	#acts_as_x
+	acts_as_followable
+	# others
 	ratyrate_rateable "title"
 	def approve
 		self.is_approved=true

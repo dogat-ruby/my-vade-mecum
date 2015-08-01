@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :set_book, only: [:show, :edit, :update, :destroy,:follow,:unfollow]
   before_action :authenticate_user!
   # GET /books
   # GET /books.json
@@ -65,7 +65,20 @@ class BooksController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  def follow
+    current_user.follow(@book)
+    flash[:notice] = "Successfully followed this book..."
+    redirect_to @book
+  end
+  def unfollow
+    if current_user.following?(@book)
+      current_user.stop_following(@book)
+      flash[:notice] = "Successfully unfollowed this book..."
+    else
+      flash[:errors] = "you can not unfollow before following"
+    end
+    redirect_to @book
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book

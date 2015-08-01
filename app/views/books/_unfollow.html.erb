@@ -1,0 +1,4 @@
+<%= form_for(@book,url:unfollow_book_path,
+             html: { method: :delete }) do |f| %>
+  <%= f.submit "Unfollow", class: "btn" %>
+<% end %>

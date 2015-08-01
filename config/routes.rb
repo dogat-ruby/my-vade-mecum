@@ -6,6 +6,10 @@ Rails.application.routes.draw do
 
   resources :books do
     resources :reviews
+    member do
+      post 'follow'
+      delete 'unfollow'
+    end
   end
 
 
