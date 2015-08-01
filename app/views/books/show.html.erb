@@ -17,6 +17,14 @@
 </table>
 <p><%= rating_for @book, "title", :start => 5%></p>
 
-<%= link_to "Add a review", book_reviews_path(@book) %>
+<%#= link_to "Add a review", book_reviews_path(@book) %>
+
+<%= render partial: "reviews/new" %>
+<div id="reviews">
+	<% if @book.reviews.count < 1 %>
+		<h4>No reviews yet</h4>
+	<% end %>
+	<%= render  @book.reviews %>
+</div>
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>

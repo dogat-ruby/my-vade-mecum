@@ -1,0 +1,11 @@
+// confirm file called
+console.log("create.js.erb file");
+
+// # add new comment to end of comments section
+$("#reviews").prepend("<%=j render @review %>");
+
+// remove current DOM element stating there are no comments yet (if no comments yet exist)
+$("#reviews h4").html("");
+
+// # replace review form so user can only comment once (if desirable)
+// $(".reviews").html("<h1>You have reviewd on this book</h1>");

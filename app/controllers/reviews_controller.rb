@@ -16,7 +16,7 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/new
   def new
-    @review = @book.reviews.build 
+    @review = @book.reviews.build
   end
 
   # GET /reviews/1/edit
@@ -27,17 +27,19 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
-    @review = @book.reviews.build(review_params) 
-    @review.user_id = current_user.id
-    @review.book_id = @book.id
+    @review = @book.reviews.build(review_params)
+    @review.reviewer = current_user
+    @review.book = @book
 
     respond_to do |format|
       if @review.save
         format.html { redirect_to [@book, @review], notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
+        format.js   {render layout: false }
       else
         format.html { render :new }
         format.json { render json: @review.errors, status: :unprocessable_entity }
+        format.js {}
       end
     end
   end
@@ -71,7 +73,7 @@ class ReviewsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_review
-      @review = Review.find(params[:id]) 
+      @review = Review.find(params[:id])
     end
 
     def set_book
