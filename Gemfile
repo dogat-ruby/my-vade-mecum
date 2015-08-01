@@ -18,8 +18,11 @@ gem "cancancan"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
-# Use postgresql as the database for Active Record
-gem 'pg'
+gem 'mysql2'
+group :production do
+	# Use postgresql as the database for Active Record
+	gem 'pg'
+end
 gem 'carrierwave'
 gem 'rmagick'
 gem 'mini_magick', '3.8.0'
@@ -57,4 +60,3 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
