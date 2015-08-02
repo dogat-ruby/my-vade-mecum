@@ -37,7 +37,7 @@
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav
             %li= link_to "Library", "/books"
-            %li= link_to "Search", "/search"
+            %li= link_to "Search", "/books/search"
             %li= link_to "Admin Panel", "/admin"
             %li= link_to "Sign out", destroy_user_session_path,:method => :delete
     .container

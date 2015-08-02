@@ -14,6 +14,7 @@ gem "omniauth-google-oauth2"
 gem "omniauth-facebook"
 gem 'devise'
 gem 'figaro'
+gem 'activeadmin', github: 'activeadmin'
 gem "cancancan"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -66,3 +67,5 @@ gem "acts_as_follower"
 gem 'simple_form'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'isbn_validation'
+gem 'ransack'
+gem 'will_paginate', '~> 3.0.6'

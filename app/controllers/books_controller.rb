@@ -79,6 +79,10 @@ class BooksController < ApplicationController
     end
     redirect_to @book
   end
+  def search
+    @query = Book.ransack(params[:q])
+    @books = @query.result(distinct: true).includes(:tags,:reviews).page(params[:tag]).to_a.uniq
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book
