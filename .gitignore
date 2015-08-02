@@ -19,3 +19,4 @@
 /config/secret_token.rb
 coverage/
 public/uploads
+public/assets
