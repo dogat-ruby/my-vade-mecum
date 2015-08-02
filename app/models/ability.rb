@@ -14,6 +14,11 @@ class Ability
         can :manage, :all
         can :read, ActiveAdmin::Page
         can :read, ActiveAdmin::Page, :name => "Dashboard"
+      elsif user.is_blocked?
+        can :read,Book do |book|
+          book.is_approved==true
+        end
+        can :search,Book
       else
         can :create,Book
         can :read,Book do book |book|

@@ -8,5 +8,15 @@ class User < ActiveRecord::Base
   has_many :books
   has_many :reviews, dependent: :destroy
   # acts_as_x
-   acts_as_follower
+  acts_as_follower
+  #scopes
+  scope :blocked, -> { where(is_blocked: true)  }
+   def block
+     self.is_blocked=true
+     self.save
+   end
+   def unblock
+     self.is_blocked=false
+     self.save
+   end
 end
