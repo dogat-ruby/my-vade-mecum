@@ -4,11 +4,25 @@ class Ability
   def initialize(user)
     # Define abilities for the passed in user here. For example:
     #
-    user ||= User.new # guest user (not logged in)
-    if user.admin?
-      can :manage, :all
+    unless user
+      can :read,Book do book |book|
+        book.is_approved==true
+      end
     else
-      can :read, :all
+      if user.admin?
+        can :manage, :all
+        can :read, ActiveAdmin::Page
+        can :read, ActiveAdmin::Page, :name => "Dashboard"
+      else
+        can :create,Book
+        can :read,Book do book |book|
+          book.is_approved==true
+        end
+        can [:read,:update,:destroy],Book  do |book|
+          book.owner==user
+        end
+        can :create,Review
+      end
     end
     #
     # The first argument to `can` is the action you are giving the user

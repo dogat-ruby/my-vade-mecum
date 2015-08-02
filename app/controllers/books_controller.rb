@@ -1,10 +1,15 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy,:follow,:unfollow]
-  before_action :authenticate_user!
+  # check_authorization
+  # before_action :authenticate_user!
   # GET /books
   # GET /books.json
   def index
-    @books = Book.all
+    if current_user.try(:admin?)
+      @books=Book.all
+    else
+      @books = Book.approved
+    end
   end
 
   # GET /books/1
@@ -17,11 +22,13 @@ class BooksController < ApplicationController
 
   # GET /books/new
   def new
+    authorize! :create, Book
     @book = Book.new(params[:book])
   end
 
   # GET /books/1/edit
   def edit
+    authorize! :edit, @book
   end
 
   # POST /books
@@ -29,6 +36,7 @@ class BooksController < ApplicationController
   def create
     @book = current_user.books.build(book_params)#Book.new(book_params)
     @book.owner=current_user
+    authorize! :create,@book
     respond_to do |format|
       if @book.save
         format.html { redirect_to @book, notice: 'Book was successfully created.' }

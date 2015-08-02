@@ -10,7 +10,7 @@ class Book < ActiveRecord::Base
 	scope :approved, -> { where(is_approved: true)  }
 	# validations
 	validates :title,:author,:picture, presence: true
-	validates :isbn,  :isbn_format => true
+	validates :isbn,  :isbn_format => true, allow_blank: true
   # validates :isbn10, :isbn_format => { :with => :isbn10 }
   # validates :isbn13, :isbn_format => { :with => :isbn13 }
 	mount_uploader :picture, PictureUploader

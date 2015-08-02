@@ -20,12 +20,15 @@
   	<%= link_to tag.name, tag_path(tag) %>
 	</span>
 <% end %>
-<%= render partial: "follow_form" %>
+<% if can? :follow, @book %>
+	<%= render partial: "follow_form" %>
+<% end %>
 <p><%= rating_for @book, "title", :start => 5%></p>
 
 <%#= link_to "Add a review", book_reviews_path(@book) %>
-
-<%= render partial: "reviews/new" %>
+<% if can? :create, @book.reviews.build %>
+	<%= render partial: "reviews/new" %>
+<% end %>
 <h4>Reviews</h4>
 <div id="reviews">
 	<% if @book.reviews.count < 1 %>
