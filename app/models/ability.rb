@@ -5,9 +5,10 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
     unless user
-      can :read,Book do book |book|
+      can :read,Book do |book|
         book.is_approved==true
       end
+      can :search,Book
     else
       if user.admin?
         can :manage, :all
@@ -22,6 +23,7 @@ class Ability
           book.owner==user
         end
         can :create,Review
+        can :search,Book
       end
     end
     #

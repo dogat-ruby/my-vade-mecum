@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy,:follow,:unfollow]
   # check_authorization
+  load_and_authorize_resource
   # before_action :authenticate_user!
   # GET /books
   # GET /books.json
@@ -16,6 +17,7 @@ class BooksController < ApplicationController
   # GET /books/1.json
   def show
     @book = Book.find(params[:id])
+    authorize! :read, @book
     @review=@book.reviews.build
     #@user = User.find(@book.user_id)
   end
@@ -88,7 +90,7 @@ class BooksController < ApplicationController
     redirect_to @book
   end
   def search
-    @query = Book.ransack(params[:q])
+    @query = Book.active.approved.ransack(params[:q])
     @books = @query.result(distinct: true).includes(:tags,:reviews).page(params[:tag]).to_a.uniq
   end
   private
