@@ -1,0 +1,5 @@
+<%= search_form_for @query,url: search_books_path, :builder => SimpleForm::FormBuilder do |f| %>
+    <%= f.input :tags_name_or_title_or_author_or_isbn_or_reviews_text_cont,label: "Search by name, title,author, isbn or reviews" %>
+    <%= f.button :submit,as: :search,label: "search" %>
+  <%end %>
+<%= render @books %>
