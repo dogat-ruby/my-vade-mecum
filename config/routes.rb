@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
   get 'tag/show'
 
   post '/rate' => 'rater#create', :as => 'rate'
