@@ -6,6 +6,9 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
   end
+  def authenticate_admin_user!
+    current_user.try(:admin?)
+  end
   protected
 
   def configure_permitted_parameters

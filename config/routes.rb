@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   end
   resources :tag
 
-  root to: 'books#index'
+  root  'books#index'
 
 
 
