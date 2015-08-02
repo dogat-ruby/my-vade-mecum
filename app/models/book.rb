@@ -17,6 +17,8 @@ class Book < ActiveRecord::Base
 	#acts_as_x
 	acts_as_followable
 	acts_as_taggable
+	#callbacks
+	before_destroy :can_destroy?
 	# others
 	ratyrate_rateable "title"
 	def approve
@@ -49,4 +51,9 @@ class Book < ActiveRecord::Base
 		self.rates("title").empty? && self.reviews.empty?
 	end
 	#accepts_nested_attributes_for :reviews
+	private
+		def can_destroy?
+			errors.add(:base, "Cannot delete book with rating or reviews") unless self.is_allowed_to_destroy?
+			errors.blank? #return false, to not destroy the element, otherwise, it will delete.
+		end
 end
