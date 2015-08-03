@@ -69,3 +69,5 @@ gem 'acts-as-taggable-on', '~> 3.4'
 gem 'isbn_validation'
 gem 'ransack'
 gem 'will_paginate', '~> 3.0.6'
+#server
+gem 'puma'
