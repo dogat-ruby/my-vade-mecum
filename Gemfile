@@ -73,3 +73,4 @@ gem 'will_paginate', '~> 3.0.6'
 gem 'puma'
 #pretend as another user
 gem 'pretender'
+gem "audited-activerecord", "~> 4.0"
