@@ -5,7 +5,14 @@ Rails.application.routes.draw do
   post '/rate' => 'rater#create', :as => 'rate'
 
   devise_for :users
-  resources :users
+  resources :users do
+    member do
+      get :impersonate
+    end
+    collection do
+      get :stop_impersonating
+    end
+  end
 
   resources :books do
     resources :reviews

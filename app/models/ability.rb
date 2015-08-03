@@ -19,9 +19,10 @@ class Ability
           book.is_approved==true
         end
         can :search,Book
+        can :stop_impersonating,User
       else
         can :create,Book
-        can :read,Book do book |book|
+        can :read,Book do |book|
           book.is_approved==true
         end
         can [:read,:update,:destroy],Book  do |book|
@@ -29,6 +30,7 @@ class Ability
         end
         can :create,Review
         can :search,Book
+        can :stop_impersonating,User
       end
     end
     #

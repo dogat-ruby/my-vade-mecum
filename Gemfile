@@ -71,3 +71,5 @@ gem 'ransack'
 gem 'will_paginate', '~> 3.0.6'
 #server
 gem 'puma'
+#pretend as another user
+gem 'pretender'
