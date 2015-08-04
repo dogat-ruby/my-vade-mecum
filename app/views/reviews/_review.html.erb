@@ -5,5 +5,7 @@
   By
   <%= review.reviewer.username unless review.reviewer.nil? %>
 </p>
-<td><%= link_to 'Edit', edit_book_review_path(@book, review) %></td>
-<td><%= link_to 'Destroy', book_review_path(@book, review), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<!-- <td><%#= link_to 'Edit', edit_book_review_path(@book, review) %></td> -->
+<%if can? :destroy,review %>
+  <td><%= link_to 'Destroy', book_review_path(@book, review), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<% end %>

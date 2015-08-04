@@ -89,6 +89,8 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
     docile (1.1.5)
+    domain_name (0.5.24)
+      unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.5.2)
     factory_girl (4.5.0)
@@ -110,6 +112,8 @@ GEM
       activesupport (>= 3.2, < 5)
     hashie (3.4.2)
     hike (1.2.3)
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
     i18n (0.7.0)
     inherited_resources (1.6.0)
       actionpack (>= 3.2, < 5)
@@ -134,6 +138,10 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mailgun_rails (0.7.0)
+      actionmailer (>= 3.2.13)
+      json (>= 1.7.7)
+      rest-client (>= 1.6.7)
     mime-types (1.25.1)
     mini_magick (3.8.0)
       subexec (~> 0.2.1)
@@ -143,6 +151,7 @@ GEM
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     mysql2 (0.3.19)
+    netrc (0.10.3)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     oauth2 (1.0.0)
@@ -200,6 +209,10 @@ GEM
     rdoc (4.2.0)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
+    rest-client (1.8.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     rmagick (2.15.3)
     rspec-core (3.3.2)
       rspec-support (~> 3.3.0)
@@ -262,6 +275,9 @@ GEM
     uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.1)
     warden (1.2.3)
       rack (>= 1.0)
     will_paginate (3.0.7)
@@ -287,6 +303,7 @@ DEPENDENCIES
   isbn_validation
   jbuilder (~> 2.0)
   jquery-rails
+  mailgun_rails
   mini_magick (= 3.8.0)
   mysql2
   omniauth-facebook

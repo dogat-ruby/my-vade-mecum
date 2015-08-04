@@ -21,4 +21,7 @@ class User < ActiveRecord::Base
      self.is_blocked=false
      self.save
    end
+   def name
+     username || email
+   end
 end

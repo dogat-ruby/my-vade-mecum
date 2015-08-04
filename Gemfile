@@ -74,3 +74,4 @@ gem 'puma'
 #pretend as another user
 gem 'pretender'
 gem "audited-activerecord", "~> 4.0"
+gem 'mailgun_rails'
