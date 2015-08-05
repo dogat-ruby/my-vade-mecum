@@ -13,6 +13,7 @@ end
 gem "omniauth-google-oauth2"
 gem "omniauth-facebook"
 gem 'devise'
+gem 'devise_invitable', '~> 1.3.4'
 gem 'figaro'
 gem 'activeadmin', github: 'activeadmin'
 gem "cancancan"
