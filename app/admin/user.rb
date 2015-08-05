@@ -12,6 +12,7 @@ ActiveAdmin.register User do
 #   permitted << :other if resource.something?
 #   permitted
 # end
+form partial: 'form'
 # Create sections on the index screen
   scope :all, default: true
   scope :blocked
