@@ -1,5 +1,5 @@
 class Notifications < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "Notifier <mailgun@sandbox3f7791fc9de44534a9d46f1930552cf5.mailgun.org>"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
