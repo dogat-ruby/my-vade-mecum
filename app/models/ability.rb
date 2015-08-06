@@ -31,6 +31,8 @@ class Ability
         can :create,Review
         can :search,Book
         can :stop_impersonating,User
+        can :profile,User
+        can :settings,User
       end
     end
     #

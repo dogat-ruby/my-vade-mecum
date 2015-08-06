@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     end
     collection do
       get :stop_impersonating
+      get :profile
+      get :settings
+      post :settings
     end
   end
 

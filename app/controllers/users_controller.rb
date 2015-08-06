@@ -73,6 +73,14 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def profile
+    @user=current_user
+  end
+  def settings
+    @user=current_user
+    if request.post?
+    end
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

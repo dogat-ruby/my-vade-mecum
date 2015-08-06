@@ -76,3 +76,4 @@ gem 'puma'
 gem 'pretender'
 gem "audited-activerecord", "~> 4.0"
 gem 'mailgun_rails'
+gem 'gravatarify', '~> 3.0.0'

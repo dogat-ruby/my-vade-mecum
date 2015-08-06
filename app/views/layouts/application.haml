@@ -42,6 +42,7 @@
               %li= link_to "Admin Panel", "/admin"
             -if current_user.present?
               %li= link_to "Sign out", destroy_user_session_path,:method => :delete
+              %li= link_to "Profile", profile_users_path
             -else
               %li= link_to "Sign In", new_user_session_path,:method => :get
             -if can? :read, User
