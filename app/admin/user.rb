@@ -19,8 +19,18 @@ form partial: 'form'
   # Customize columns displayed on the index screen in the table
   index do
    selectable_column
-   column :user_name
+   column :username
    column :email
+   column :sign_in_count
+   column :ratings_given do |user|
+      user.ratings_given.count
+    end
+   column :number_of_books do |user|
+      user.books.count
+    end
+   column :average_rating_given do |user|
+      user.ratings_given.average(:stars)
+    end
    actions
   end
   batch_action :block do |ids|
@@ -35,4 +45,9 @@ form partial: 'form'
    end
    redirect_to collection_path, alert: "The users have been unblocked."
  end
+  controller do
+    def scoped_collection
+      super.includes :books # prevents N+1 queries to your database
+    end
+  end
 end
