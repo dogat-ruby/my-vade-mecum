@@ -9,7 +9,7 @@ class Review < ActiveRecord::Base
 		receivers=self.book.followers.push self.reviewer
 		# Notifications.review_notification(self.book,self.reviewer).deliver
 		receivers.each do |receiver|
-			Notifications.review_notification(self.book,receiver).deliver
+			Notifications.delay.review_notification(self.book,receiver)
 		end
 	end
 end
