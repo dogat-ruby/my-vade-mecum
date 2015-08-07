@@ -3,7 +3,7 @@
   <%= f.input :isbn %>
   <%= f.input :author %>
   <%= f.input :description, as: :text %>
-  <%= f.input :tag_list %>
+  <%= f.input :tag_list, input_html:{data:{role:'tagsinput'}} %>
   <%= f.input :picture ,as: :file%>
   <%= f.button :submit %>
 <% end %>

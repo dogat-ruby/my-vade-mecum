@@ -57,6 +57,8 @@ GEM
       activerecord (~> 4.0)
       audited (= 4.2.0)
     bcrypt (3.1.10)
+    bootstrap-tagsinput-rails (0.4.2.1)
+      railties (>= 3.1)
     bourbon (3.2.4)
       sass (~> 3.2)
       thor
@@ -323,6 +325,7 @@ DEPENDENCIES
   acts-as-taggable-on (~> 3.4)
   acts_as_follower
   audited-activerecord (~> 4.0)
+  bootstrap-tagsinput-rails
   cancancan
   capybara
   carrierwave

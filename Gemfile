@@ -81,3 +81,4 @@ gem 'delayed_job_active_record'
 gem 'rails-settings-ui'
 gem "rails-settings-cached", "0.4.1"
 gem 'quiet_assets', group: :development
+gem 'bootstrap-tagsinput-rails'
