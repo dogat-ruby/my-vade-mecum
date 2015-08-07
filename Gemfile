@@ -78,3 +78,6 @@ gem "audited-activerecord", "~> 4.0"
 gem 'mailgun_rails'
 gem 'gravatarify', '~> 3.0.0'
 gem 'delayed_job_active_record'
+gem 'rails-settings-ui'
+gem "rails-settings-cached", "0.4.1"
+gem 'quiet_assets', group: :development

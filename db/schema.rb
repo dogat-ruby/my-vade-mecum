@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150806182135) do
+ActiveRecord::Schema.define(version: 20150807163903) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -149,6 +149,17 @@ ActiveRecord::Schema.define(version: 20150806182135) do
 
   add_index "reviews", ["book_id"], name: "index_reviews_on_book_id", using: :btree
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
+
+  create_table "settings", force: true do |t|
+    t.string   "var",                   null: false
+    t.text     "value"
+    t.integer  "thing_id"
+    t.string   "thing_type", limit: 30
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "settings", ["thing_type", "thing_id", "var"], name: "index_settings_on_thing_type_and_thing_id_and_var", unique: true, using: :btree
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"

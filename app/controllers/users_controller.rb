@@ -79,6 +79,8 @@ class UsersController < ApplicationController
   def settings
     @user=current_user
     if request.post?
+      email_type = params[:settings_users][:email_type]
+      current_user.settings.email_type=email_type unless email_type.nil?
     end
   end
   private

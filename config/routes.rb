@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsSettingsUi::Engine, at: 'settings'
   ActiveAdmin.routes(self)
   get 'tag/show'
 

@@ -16,6 +16,7 @@ ActiveAdmin.register Book do
    selectable_column
    column :title
    column :description
+   column :author
    actions
  end
  batch_action :approve do |ids|

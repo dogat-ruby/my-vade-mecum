@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include RailsSettings::Extend
   ratyrate_rater
   audited
   # Include default devise modules. Others available are:
