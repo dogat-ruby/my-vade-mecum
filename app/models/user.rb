@@ -25,4 +25,24 @@ class User < ActiveRecord::Base
    def name
      username || email
    end
+   def send_digest_notification
+    reviews=self.following_books.collect(&:reviews)
+    rates=self.following_books.collect{|book| book.rates("title")}
+    reviews=reviews.select { |review| review.where('created_at <= ?',1.day.ago) }.flatten
+    rates=rates.select { |rate| rate.where('created_at <= ?',1.day.ago) }.flatten
+    if reviews.present?
+      Notifications.review_digest_notification(reviews,self).deliver
+    end
+    if rates.present?
+    # if true
+      Notifications.rate_digest_notification(rates,self).deliver
+    end
+  end
+  def self.send_digest_notification
+   users=User.with_settings_for('email_type')
+   users=users.select { |user| user.settings.email_type =='digest' }
+   users.each do |user|
+     user.send_digest_notification
+   end
+  end
 end

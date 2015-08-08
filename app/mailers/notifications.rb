@@ -19,6 +19,18 @@ class Notifications < ActionMailer::Base
     mail to: user.email
   end
 
+  def review_digest_notification(reviews,user)
+    @greeting = "Hi"
+    @reviews=reviews
+    @user=user
+    mail to: user.email
+  end
+  def rate_digest_notification(rates,user)
+    @greeting = "Hi"
+    @rates=rates
+    @user=user
+    mail to: user.email
+  end
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #

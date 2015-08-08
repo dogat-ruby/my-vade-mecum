@@ -1,0 +1,10 @@
+<h1>Notifications#review_notification</h1>
+
+<p>
+  <%= @greeting %>,
+    <% @rates.each do |rate| %>
+    <p>
+      book(<%= rate.rateable.title %> ) is rated by <%= @user==rate.rater ? "you" : rate.rater.name %>
+    </p>
+    <% end %>
+</p>

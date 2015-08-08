@@ -2,6 +2,7 @@ class Book < ActiveRecord::Base
 	# Associations
 	belongs_to :owner , class_name: "User",foreign_key: "user_id"
 	has_many :reviews
+	# has_many
 	#scopes
 	default_scope -> { where(is_deleted: false)}
 	scope :active, -> { where(is_active:true)  }
