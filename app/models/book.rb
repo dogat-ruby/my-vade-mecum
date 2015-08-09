@@ -10,7 +10,8 @@ class Book < ActiveRecord::Base
 	scope :to_be_approved, -> { where(is_approved: false)  }
 	scope :approved, -> { where(is_approved: true)  }
 	# validations
-	validates :title,:author,:picture, presence: true
+	validates :title,:author, presence: true
+	validates :picture, presence: true,on: :create
 	validates :isbn,  :isbn_format => true, allow_blank: true
   # validates :isbn10, :isbn_format => { :with => :isbn10 }
   # validates :isbn13, :isbn_format => { :with => :isbn13 }
