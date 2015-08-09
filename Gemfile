@@ -83,3 +83,4 @@ gem "rails-settings-cached", "0.4.1"
 gem 'quiet_assets', group: :development
 gem 'bootstrap-tagsinput-rails'
 gem 'whenever', :require => false
+gem "daemons"

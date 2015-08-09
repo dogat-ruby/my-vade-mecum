@@ -80,7 +80,9 @@ class UsersController < ApplicationController
     @user=current_user
     if request.post?
       email_type = params[:settings_users][:email_type]
+      unsubscribed_books = params[:settings_users][:unsubscribed_books]
       current_user.settings.email_type=email_type unless email_type.nil?
+      current_user.settings.unsubscribed_books=unsubscribed_books unless unsubscribed_books.nil?
     end
   end
   private

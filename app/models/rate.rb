@@ -9,7 +9,8 @@ class Rate < ActiveRecord::Base
   def send_notification
 		receivers=self.rateable.followers.push self.rater
 		# Notifications.review_notification(self.book,self.reviewer).deliver
-    receivers.reject { |receiver|  receiver.settings.email_type=="digest"}
+    receivers= receivers.reject { |receiver|  receiver.settings.email_type=="digest"}
+    receivers= receivers.select { |receiver|  receiver.is_subscribed?(self.rateable)}
 		receivers.each do |receiver|
 			Notifications.delay.review_notification(self.rateable,receiver)
 		end

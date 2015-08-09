@@ -25,9 +25,20 @@ class User < ActiveRecord::Base
    def name
      username || email
    end
+   def unsubscribed_books
+     return [] if self.settings.unsubscribed_books.nil? || self.settings.unsubscribed_books.empty?
+     self.settings.unsubscribed_books.map { |id|  Book.find_by_id(id)}
+   end
+   def subscribed_books
+     following_books-unsubscribed_books
+   end
+   def is_subscribed?(book)
+     subscribed_books.include? book
+   end
    def send_digest_notification
-    reviews=self.following_books.collect(&:reviews)
-    rates=self.following_books.collect{|book| book.rates("title")}
+    books=self.subscribed_books
+    reviews=books.collect(&:reviews)
+    rates=books.collect{|book| book.rates("title")}
     reviews=reviews.select { |review| review.where('created_at <= ?',1.day.ago) }.flatten
     rates=rates.select { |rate| rate.where('created_at <= ?',1.day.ago) }.flatten
     if reviews.present?

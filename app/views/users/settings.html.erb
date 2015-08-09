@@ -61,7 +61,16 @@ Licensed under MIT
 		<div class="col-md-9">
             <div class="profile-content">
               <%= simple_form_for :settings_users do |f| %>
+                <p>
+                  email_type
+                </p>
                 <%= f.collection_radio_buttons :email_type, [[:digest, 'Digest'] ,[:individual, 'Individual']], :first, :last,checked: current_user.settings.email_type %>
+                <br>
+                <p>
+                  unsubscribe book
+                </p>
+                <%#= f.collection_radio_buttons :unsubscribed_books, @user.following_books,:id,:title,{},{label: :unsubscribed_books,multiple: true} %>
+                <%= f.input :unsubscribed_books, collection: @user.following_books, input_html: { multiple: true },selected: @user.settings.unsubscribed_books %>
                 <%= f.submit 'Save' %>
             <% end %>
             </div>

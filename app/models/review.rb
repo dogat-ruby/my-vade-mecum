@@ -7,7 +7,8 @@ class Review < ActiveRecord::Base
 	#validates :text, :user_id, :book_id, presence: true
 	def send_notification
 		receivers=self.book.followers.push self.reviewer
-		receivers.reject { |receiver|  receiver.settings.email_type=="digest"}
+		receivers= receivers.reject { |receiver|  receiver.settings.email_type=="digest"}
+		receivers= receivers.select { |receiver|  receiver.is_subscribed?(self.book)}
 		receivers.each do |receiver|
 			Notifications.delay.review_notification(self.book,receiver)
 		end
