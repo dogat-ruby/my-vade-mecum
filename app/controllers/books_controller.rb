@@ -7,9 +7,11 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     if current_user.try(:admin?)
-      @books=Book.all
+      @q = Book.ransack(params[:q])
+      @books= @q.result.paginate(:page => params[:page], :per_page => 10).includes(:title_rates,:title_average)
     else
-      @books = Book.approved
+      @q = Book.approved.ransack(params[:q])
+      @books=@q.result.paginate(:page => params[:page], :per_page => 10).includes(:title_rates,:title_average)
     end
   end
 

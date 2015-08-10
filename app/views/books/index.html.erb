@@ -3,9 +3,13 @@
 <table width= "600" class="table table-bordered"%>
   <thead>
     <tr>
-      <th>Title</th>
+      <%= content_tag :th, sort_link(@q, :title) %>
+      <%= content_tag :th, sort_link(@q, :isbn) %>
+      <%= content_tag :th, sort_link(@q, :author) %>
+      <%#= content_tag :th, sort_link(@q, 'title_average.avg') %>
+      <!-- <th>Title</th>
       <th>ISBN</th>
-      <th>Author</th>
+      <th>Author</th> -->
       <th colspan="5"></th>
     </tr>
   </thead>
@@ -15,6 +19,7 @@
         <td><%= book.title %></td>
         <td><%= book.isbn %></td>
         <td><%= book.author %></td>
+        <!-- <td><%#= book.title_average.try(:avg) %></td> -->
         <td><%= link_to 'Show', book %></td>
         <% if can? :update, book %>
           <td><%= link_to 'Edit', edit_book_path(book) %></td>
@@ -26,6 +31,7 @@
     <% end %>
   </tbody>
 </table>
+<%= will_paginate @books %>
 
 <br>
 <% if can? :create, Book %>
