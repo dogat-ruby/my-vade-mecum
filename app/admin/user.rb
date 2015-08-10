@@ -47,7 +47,7 @@ form partial: 'form'
  end
   controller do
     def scoped_collection
-      super.includes :books # prevents N+1 queries to your database
+      super.includes :books,:ratings_given # prevents N+1 queries to your database
     end
   end
 end

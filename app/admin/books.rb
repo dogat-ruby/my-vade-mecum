@@ -17,6 +17,9 @@ ActiveAdmin.register Book do
    column :title
    column :description
    column :author
+   column :average_rating,sortable: "rating_caches.avg" do |book|
+      book.title_average.try(:avg)
+    end
    actions
  end
  batch_action :approve do |ids|
@@ -25,10 +28,15 @@ ActiveAdmin.register Book do
     end
     redirect_to collection_path, alert: "The books have been approved."
   end
- batch_action :deactivate do |ids|
+  batch_action :deactivate do |ids|
     Book.find(ids).each do |book|
       book.deactivate
     end
     redirect_to collection_path, alert: "The books have been decativated."
+  end
+  controller do
+    def scoped_collection
+      super.includes :title_average # prevents N+1 queries to your database
+    end
   end
 end
